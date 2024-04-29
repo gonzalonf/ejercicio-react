@@ -1,29 +1,32 @@
 import { useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 
-import { Slider } from "@components/Slider";
+import { SliderInput } from "@components/Slider";
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div className="">
-      <main>
+    <div className={styles.container}>
+      <main className={styles.main}>
         <h1>Simulá tu crédito</h1>
 
-        <div className="controls">
-          <Slider title="Monto total" currency="$" />
-          <Slider title="Plazo" currency="" />
+        <div classNames={styles.controls}>
+          <SliderInput
+            title="Monto total"
+            currency="$"
+            start={5000}
+            end={50000}
+          />
+          <SliderInput title="Plazo" currency="" start={3} end={24} />
         </div>
 
-        <section className="installments">
-          <span className="installments__label">Cuota fija por mes</span>{" "}
-          <span className="installments__amount">$ amount</span>
-          <div className="installments__actions">
-            <button className="installments__get">Obtebé crédito</button>
-            <button className="installments__view">
-              Ver detalle de cuotas
-            </button>
+        <section className={styles.installments}>
+          <span className={styles.label}>Cuota fija por mes</span>{" "}
+          <span className={styles.amount}>$ amount</span>
+          <div className={styles.actions}>
+            <button className={styles.get}>Obtené crédito</button>
+            <button className={styles.view}>Ver detalle de cuotas</button>
           </div>
         </section>
       </main>

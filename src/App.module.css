@@ -1,0 +1,43 @@
+.container {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.installments {
+  text-transform: uppercase;
+  background: var(--back-darker);
+  .get, .view, .actions, .label {
+    text-transform: inherit;
+    cursor: pointer;
+    font-weight: bold;
+    color: inherit;
+    border: none;
+  }
+  .get {
+    background: var(--btn-primary) ;
+  }
+  .get:hover {
+    background: var(--btn-primary-hover) ;
+  }
+  .view {
+    background: var(--btn-secondary) ;
+  }
+  .view:hover {
+    background: var(--btn-secondary-hover) ;
+  }
+}
+
+.main {
+  background: var(--main);
+  height: 596px;
+  width: 590px;
+  max-width: calc(100vw - 10px);
+  padding: 50px 40px 70px;
+}
+
+h1 {
+  text-align: center;
+}

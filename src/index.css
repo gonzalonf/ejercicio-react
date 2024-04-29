@@ -1,18 +1,4 @@
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-} */
+/* RESET... */
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -63,8 +49,31 @@ table {
 	border-spacing: 0;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+
+/* GLOBAL STYLES  */
+
+:root {
+  --back-dark: #003B67;
+  --back-darker: #00355D;
+  --back-light: #084F85;
+  --main: #003B67;
+  --font-color: #FFFFFF;
+  --btn-primary: #17AA8D;
+  --btn-primary-hover: #07caa3;
+  --btn-secondary: #0B548B;
+  --btn-secondary-hover: #0d6fb9;
+}
+  body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background: var(--back-light); /* fallback */
+    background-image: linear-gradient(180deg, var(--back-light), var(--back-dark));
+    background-attachment: fixed; 
+    color: var(--font-color);
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
 }
