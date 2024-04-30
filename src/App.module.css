@@ -3,31 +3,6 @@
   place-items: center;
   width: 100vw;
   height: 100vh;
-
-}
-
-.installments {
-  text-transform: uppercase;
-  background: var(--back-darker);
-  .get, .view, .actions, .label {
-    text-transform: inherit;
-    cursor: pointer;
-    font-weight: bold;
-    color: inherit;
-    border: none;
-  }
-  .get {
-    background: var(--btn-primary) ;
-  }
-  .get:hover {
-    background: var(--btn-primary-hover) ;
-  }
-  .view {
-    background: var(--btn-secondary) ;
-  }
-  .view:hover {
-    background: var(--btn-secondary-hover) ;
-  }
 }
 
 .main {
@@ -38,6 +13,67 @@
   padding: 50px 40px 70px;
 }
 
-h1 {
+.title {
   text-align: center;
+  margin: 30px 0 60px;
 }
+
+.installments {
+  text-transform: uppercase;
+  background: var(--back-darker);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 0px;
+  height: 110px;
+
+  .get,
+  .view,
+  .label {
+    text-transform: inherit;
+    font-weight: bold;
+    color: inherit;
+    border: none;
+    font-size: 1.25rem;
+    font-family: inherit;
+  }
+  .get {
+    cursor: pointer;
+    background: var(--btn-primary);
+    font-size: 1.6rem;
+    grid-area: 2 / 1 / 3 / 2; 
+  }
+  .get:hover {
+    background: var(--btn-primary-hover);
+  }
+  .get:active {
+    background: var(--btn-primary-active);
+  }
+  .view {
+    cursor: pointer;
+    background: var(--btn-secondary);
+    grid-area: 2 / 2 / 3 / 3; 
+    font-size: 1rem;
+  } 
+  .view:hover {
+    background: var(--btn-secondary-hover);
+  }
+  .view:active {
+    background: var(--btn-secondary-active);
+  }
+  .amountWrapper {
+    grid-area: 1 / 1 / 2 / 3;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+  }
+  .amount {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+}
+

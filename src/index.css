@@ -51,29 +51,57 @@ table {
 
 
 /* GLOBAL STYLES  */
+* {
+  box-sizing: border-box;
+}
 
 :root {
   --back-dark: #003B67;
   --back-darker: #00355D;
   --back-light: #084F85;
   --main: #003B67;
-  --font-color: #FFFFFF;
+  --white: #FFFFFF;
+  
+  /* Fonts */
+  --font-color: var(--white);
+  --font-family: "Montserrat", sans-serif;
+  
+  /* Buttons */
   --btn-primary: #17AA8D;
+  --btn-primary-active: #0f7c66;
   --btn-primary-hover: #07caa3;
   --btn-secondary: #0B548B;
+  --btn-secondary-active: #0c4b7c;
   --btn-secondary-hover: #0d6fb9;
 }
   body {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-family);
     font-optical-sizing: auto;
     font-style: normal;
-    background: var(--back-light); /* fallback */
+    background: var(--back-light); /* background fallback */
     background-image: linear-gradient(180deg, var(--back-light), var(--back-dark));
     background-attachment: fixed; 
     color: var(--font-color);
+  }
+  html {
+  font-size: 16px;
+
 }
 
 h1 {
   font-size: 30px;
   font-weight: bold;
+}
+
+/* rc-slider lib overrides */
+.rc-slider-handle, .rc-slider-rail, .rc-slider-track, .rc-slider-step {
+  background-color: var(--white);
+  border-color: var(--white);
+  opacity: 1;
+}
+
+@media (width <= 500px) {
+  html {
+    font-size: 12px;
+  }
 }

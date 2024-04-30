@@ -1,0 +1,6 @@
+/* 
+Test sync between slider and input
+
+Test formatter
+
+*/
