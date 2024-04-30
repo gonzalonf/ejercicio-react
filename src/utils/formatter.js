@@ -1,10 +1,8 @@
-// to-do
-
 /**
  * Formats a number to a string with desired delimiters and currency
  * @param {number} number
  * @param {string} delimiter
- * @param {string} decimals
+ * @param {boolean} decimals
  * @param {string} currency
  * @returns {string}
  */

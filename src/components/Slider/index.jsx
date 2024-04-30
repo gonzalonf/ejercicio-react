@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+
 import styles from "./Slider.module.css";
+import { numberFormatter, extractDigits } from "@utils/formatter";
 
 export function SliderInput({
   currency,
@@ -12,24 +14,25 @@ export function SliderInput({
   handleChange,
 }) {
   useEffect(() => {
+    /* Intialize input set */
     if (inputRef.current) {
-      inputRef.current.value = value;
+      inputRef.current.value = !currency
+        ? value
+        : numberFormatter(value, ".", currency, false);
     }
-  }, [value]);
+  }, []);
 
   const inputRef = useRef(null);
 
   const handleInputChange = (e) => {
-    console.log("blur", e.target.value);
     const { value } = e.target;
     let safeValue = Math.round(
       value <= end ? (value >= start ? value : start) : end
     );
-    handleChange(safeValue); // send to reducer
-    // TO-DO: do formatting here (if has currency symbol)
     inputRef.current.value = !currency
       ? safeValue
-      : /* call formatter */ "$ " + safeValue;
+      : numberFormatter(safeValue, ".", currency, false);
+    handleChange(safeValue);
   };
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
@@ -37,15 +40,14 @@ export function SliderInput({
     }
   };
   const handleFocus = (e) => {
-    console.log("focus");
-    // to-do: add format cleanup here (inverse)
+    if (!currency) return;
+    inputRef.current.value = extractDigits(e.target.value);
   };
 
   return (
     <div className={styles.slider}>
       <label className={styles.label}>
         {label}
-        {/* {currency} */}
         <input
           ref={inputRef}
           className={styles.input}
@@ -62,8 +64,12 @@ export function SliderInput({
           onChange={(e) => handleChange(e)}
           value={value}
         />
-        <div className={styles.start}>{start}</div>
-        <div className={styles.end}>{end}</div>
+        <div className={styles.start}>
+          {currency ? numberFormatter(start, ".", "$") : start}
+        </div>
+        <div className={styles.end}>
+          {currency ? numberFormatter(end, ".", "$") : end}
+        </div>
       </div>
     </div>
   );

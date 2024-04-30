@@ -30,11 +30,6 @@ function App() {
   const { borrowAmount, installments, modal } = appState;
 
   // Derive from state
-  /* TO-DO: format correctly */
-  // const amount = Math.floor(borrowAmount / installments);
-  // const amount = numberFormatter((borrowAmount / installments).toFixed(2));
-  // .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  numberFormatter();
   const amount = numberFormatter(borrowAmount / installments, ",", "$", true);
   return (
     <div className={styles.container}>
