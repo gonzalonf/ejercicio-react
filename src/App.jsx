@@ -4,6 +4,7 @@ import styles from "./App.module.css";
 import { SliderInput } from "@components/Slider";
 import { Modal } from "@components/Modal";
 import { appReducer, initialState } from "@/App.reducer.js";
+import { numberFormatter } from "@utils/formatter";
 
 const CreditModalContent = () => (
   <div className={styles.modal}>
@@ -15,10 +16,10 @@ const Installments = ({ installments, borrowAmount, amount }) => (
     <h2 className={styles.h2}>Cuotas:</h2>
     <ul>
       <li>
-        <strong>{installments}</strong> pagos de <strong>$ {amount}</strong>
+        <strong>{installments}</strong> pagos de <strong>{amount}</strong>
       </li>
       <li>
-        (<strong>$ {borrowAmount}</strong> monto total){" "}
+        (<strong>{numberFormatter(borrowAmount, ",", "$")}</strong> monto total){" "}
       </li>
     </ul>
   </div>
@@ -30,7 +31,11 @@ function App() {
 
   // Derive from state
   /* TO-DO: format correctly */
-  const amount = Math.floor(borrowAmount / installments);
+  // const amount = Math.floor(borrowAmount / installments);
+  // const amount = numberFormatter((borrowAmount / installments).toFixed(2));
+  // .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  numberFormatter();
+  const amount = numberFormatter(borrowAmount / installments, ",", "$", true);
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -62,7 +67,7 @@ function App() {
         <section className={styles.installments}>
           <div className={styles.amountWrapper}>
             <span className={styles.label}>Cuota fija por mes</span>{" "}
-            <span className={styles.amount}>$ {amount}</span>
+            <span className={styles.amount}>{amount}</span>
           </div>
           <button
             className={styles.get}

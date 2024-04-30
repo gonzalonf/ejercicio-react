@@ -13,7 +13,6 @@ export function SliderInput({
 }) {
   useEffect(() => {
     if (inputRef.current) {
-      console.log("ref chage");
       inputRef.current.value = value;
     }
   }, [value]);
@@ -26,14 +25,20 @@ export function SliderInput({
     let safeValue = Math.round(
       value <= end ? (value >= start ? value : start) : end
     );
-    handleChange(safeValue);
-    inputRef.current.value = safeValue;
+    handleChange(safeValue); // send to reducer
+    // TO-DO: do formatting here (if has currency symbol)
+    inputRef.current.value = !currency
+      ? safeValue
+      : /* call formatter */ "$ " + safeValue;
   };
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
       e.target.blur();
-      //Write you validation logic here
     }
+  };
+  const handleFocus = (e) => {
+    console.log("focus");
+    // to-do: add format cleanup here (inverse)
   };
 
   return (
@@ -44,7 +49,8 @@ export function SliderInput({
         <input
           ref={inputRef}
           className={styles.input}
-          type="number"
+          type={!currency ? "number" : "text"}
+          onFocus={handleFocus}
           onBlur={handleInputChange}
           onKeyDown={handleKeyPress}
         />

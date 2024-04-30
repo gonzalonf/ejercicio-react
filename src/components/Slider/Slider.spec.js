@@ -1,6 +1,9 @@
-/* 
-Test sync between slider and input
+// to-do: add dependencies and tests (vitest & testing library)
+import { expect, test, describe } from "vitest";
+import { SliderInput } from "./index";
 
-Test formatter
-
-*/
+describe("Slider Input Component", () => {
+  test("Should sync input and slider", () => {
+    expect(true).toBe(true);
+  });
+});
