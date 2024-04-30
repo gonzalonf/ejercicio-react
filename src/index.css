@@ -59,6 +59,7 @@ table {
   --back-dark: #003B67;
   --back-darker: #00355D;
   --back-light: #084F85;
+  --backdrop-color: rgba(7, 77, 131, 0.7);
   --main: #003B67;
   --white: #FFFFFF;
   
@@ -92,6 +93,38 @@ h1 {
   font-size: 30px;
   font-weight: bold;
 }
+li {
+  padding: 10px 0;
+}
+strong {
+  font-weight: bold;
+}
+.btn-primary {
+  background: var(--btn-primary);
+  font-weight: bold;
+  color: var(--font-color);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover {
+  background: var(--btn-primary-hover);
+}
+.btn-primary:active {
+  background: var(--btn-primary-active);
+}
+.btn-secondary {
+  background: var(--btn-secondary);
+  font-weight: bold;
+  color: var(--font-color);
+  cursor: pointer;
+  border: none;
+}
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover);
+}
+.btn-secondary:active {
+  background: var(--btn-secondary-active);
+}
 
 /* rc-slider lib overrides */
 .rc-slider-handle, .rc-slider-rail, .rc-slider-track, .rc-slider-step {
@@ -105,3 +138,4 @@ h1 {
     font-size: 12px;
   }
 }
+ 
