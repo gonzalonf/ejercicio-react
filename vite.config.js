@@ -14,4 +14,8 @@ export default defineConfig({
   css: {
     modules: true,
   },
+  test: {
+    environment: "jsdom",
+    globals: true,
+  },
 });

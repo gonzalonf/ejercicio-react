@@ -20,7 +20,7 @@ export function SliderInput({
         ? value
         : numberFormatter(value, ".", currency, false);
     }
-  }, []);
+  }, [value]);
 
   const inputRef = useRef(null);
 
