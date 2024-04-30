@@ -1,11 +1,9 @@
-import { useReducer, useState } from "react";
-import styles from "./App.module.css";
+import { useReducer } from "react";
 
+import styles from "./App.module.css";
 import { SliderInput } from "@components/Slider";
 import { Modal } from "@components/Modal";
 import { appReducer, initialState } from "@/App.reducer.js";
-
-appReducer();
 
 const CreditModalContent = () => (
   <div className={styles.modal}>
@@ -27,16 +25,12 @@ const Installments = ({ installments, borrowAmount, amount }) => (
 );
 function App() {
   const [appState, dispatch] = useReducer(appReducer, initialState);
-  const [modalContent, setModalContent] = useState(null);
 
-  const openCredit = () => {};
-
-  // derive from state
   const { borrowAmount, installments, modal } = appState;
 
-  const amount = Math.floor(
-    borrowAmount / installments
-  ); /* TO-do: format correctly */
+  // derive from state
+  /* TO-DO: format correctly */
+  const amount = Math.floor(borrowAmount / installments);
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -49,6 +43,9 @@ function App() {
             start={5000}
             end={50000}
             value={borrowAmount}
+            handleChange={(payload) =>
+              dispatch({ type: "set-amount", payload })
+            }
           />
           <SliderInput
             label="Plazo"
@@ -56,6 +53,9 @@ function App() {
             start={3}
             end={24}
             value={installments}
+            handleChange={(payload) =>
+              dispatch({ type: "set-installments", payload })
+            }
           />
         </section>
 

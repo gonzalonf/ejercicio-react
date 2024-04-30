@@ -4,19 +4,17 @@ export const initialState = {
   modal: null,
 };
 
-export function appReducer(state, action) {
-  switch (action?.type) {
+export function appReducer(state, { type, payload }) {
+  switch (type) {
     case "modal-open":
-      return { ...state, modal: action.payload };
+      return { ...state, modal: payload };
     case "modal-close":
       return { ...state, modal: null };
+    case "set-amount":
+      return { ...state, borrowAmount: payload };
+    case "set-installments":
+      return { ...state, installments: payload };
     default:
       return initialState;
   }
-
-  // if (action.type === 'incremented_age') {
-  //   return {
-  //     age: state.age + 1
-  //   };
-  console.log("reduce");
 }
