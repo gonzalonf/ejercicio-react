@@ -1,6 +1,4 @@
 .dialog {
-    /* width: 500px; */
-    /* height: 500px; */
     min-width: 300px;
     border: none;
     color: var(--back-dark);

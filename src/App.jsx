@@ -28,7 +28,7 @@ function App() {
 
   const { borrowAmount, installments, modal } = appState;
 
-  // derive from state
+  // Derive from state
   /* TO-DO: format correctly */
   const amount = Math.floor(borrowAmount / installments);
   return (
